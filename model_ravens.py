@@ -695,3 +695,23 @@ if not (output_flags['scenario3'] or output_all):
 else:
     plt.show()
 
+# Scenario 3 sea level projections
+# Rahmstorf's equation: dH/dt = a * (T - T_0) => (T - T_0) is the surface temperature anomaly already obtained.
+# a = 3.4 mm / year obtained from the original paper.
+sea_levels = []
+last_state = 0
+for m in model_temps:
+    new_state = 3.4 * m + last_state
+    sea_levels.append(new_state)
+    last_state = new_state
+
+
+plt.title('Scenario 3 – Sea levels')
+plt.xlabel('Year')
+plt.ylabel('Sea levels since 2015 (mm)')
+plt.grid()
+plt.plot(modelling_years, sea_levels, marker='.', linestyle='None')
+if not (output_flags['scenario3'] or output_all):
+    plt.clf()
+else:
+    plt.show()
