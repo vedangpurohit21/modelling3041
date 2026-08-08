@@ -537,6 +537,7 @@ def d_inv_alt(_td, scenario_num=1):
 
 
 modelling_years = list(range(2015, YEAR_END))
+extended_modelling_years = list(range(2015, YEAR_END + 200))
 # plt.plot(modelling_years, [gdppc_alt(y) for y in modelling_years], marker='.', linestyle='None')
 # plt.show()
 
@@ -587,6 +588,25 @@ if not (output_flags['scenario1'] or output_all):
     plt.clf()
 else:
     plt.show()
+
+
+model_temps = [0.]
+for y in extended_modelling_years[1:]:
+    model_temps.append(model_temps[-1] + (scenario_1_emissions(y) - removal_scenario_1(y)))
+model_temps = [float(k_temp) * m for m in model_temps]
+model_temps = [m + actual_model_temps[extended_modelling_years[0] - TEMP_YEAR_INIT] for m in model_temps]
+
+plt.title('Scenario 1 – Trajectory (Long term)')
+plt.xlabel('Year')
+plt.ylabel('Temperature anomaly (°C)')
+plt.grid()
+plt.plot(extended_modelling_years, model_temps, marker='.', linestyle='None')
+if not (output_flags['scenario1'] or output_all):
+    plt.clf()
+else:
+    plt.show()
+
+
 
 
 
@@ -675,3 +695,23 @@ if not (output_flags['scenario3'] or output_all):
 else:
     plt.show()
 
+# Scenario 3 sea level projections
+# Rahmstorf's equation: dH/dt = a * (T - T_0) => (T - T_0) is the surface temperature anomaly already obtained.
+# a = 3.4 mm / year obtained from the original paper.
+sea_levels = []
+last_state = 0
+for m in model_temps:
+    new_state = 3.4 * m + last_state
+    sea_levels.append(new_state)
+    last_state = new_state
+
+
+plt.title('Scenario 3 – Sea levels')
+plt.xlabel('Year')
+plt.ylabel('Sea levels since 2015 (mm)')
+plt.grid()
+plt.plot(modelling_years, sea_levels, marker='.', linestyle='None')
+if not (output_flags['scenario3'] or output_all):
+    plt.clf()
+else:
+    plt.show()
