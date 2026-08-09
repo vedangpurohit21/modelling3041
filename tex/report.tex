@@ -1,5 +1,5 @@
 \documentclass[12pt]{article}
-\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[a4paper,margin=0.95in]{geometry}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{tabularx}
@@ -25,6 +25,10 @@
 ]{biblatex}
 
 \addbibresource{sources.bib}
+
+\usepackage{titlesec}
+% \titleformat*{\section}{\Large\bfseries}
+% \renewcommand*{\bibfont}{\small} 
 
 \usepackage{lmodern}
 \usepackage{mathpazo}
@@ -490,7 +494,7 @@ increasing the technology improvement rate $r_d$ by 2.5 times.
 For the active carbon removal, we follow a linear ramp, reaching 94.9 gigatonnes of \cotwo{} by 2100,
 then lowering efforts to match global emissions in order to keep temperature stable.
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/scen3.png}
 	\caption{
@@ -509,7 +513,7 @@ In this model, the sea levels stop rising at 381 mm higher than in 2015.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\textwidth]{assets/scen3_sea.png}
+	\includegraphics[width=0.75\textwidth]{assets/scen3_sea.png}
 	\caption{
 		Scenario 3 model sea levels since 2015
 	}
@@ -561,7 +565,7 @@ However, if the population were to decline in the future, our model would predic
 assuming other factors remain unchanged including any exogenous events such as military conflict, pandemics or global financial crises
 that could affect mortality or birthrates.
 This would reduce cumulative emissions, thus lowering the projected temperature trajectories and sea level rise trajectories.
-However, since population and economic growth are modelled separately,
+But since population and economic growth are modelled separately,
 our model does not account for how any substantial declines in population could affect economic activity or developments in technology.
 
 Many limitations should be considered when interpreting the results produced by our model.
@@ -593,7 +597,7 @@ These targets are mathematically possible, but under current trends, are not yet
 \nocite{*}
 \renewcommand{\section}[2]{}	% Hide the "References" heading
 % \fontsize{9pt}{10pt}\selectfont
-\tiny
+% \footnotesize
 \printbibliography
 \endgroup
 
