@@ -59,7 +59,17 @@ where:
 \maketitle
 
 \begin{abstract}
-	Something something summarise the article in 300 words or fewer.
+	This report produces a simple mathematical model to investigate whether climate change can be `stopped'
+	by altering economic growth, technology, and implementing active carbon removal strategies.
+	The model simplifies the Kaya Identity and combines the expression with a linear relationship between carbon emissions and temperature,
+	as well as a model which represents the effects of temperature on sea levels.
+	This report examines the mathematical and practical feasibility of three GICCE climate goals.
+	Results indicate that improvements in technology and reduced economic growth can substantially slow warming,
+	but stabilising temperatures requires net emissions to approach zero, and reducing temperatures requires
+	sustained net-negative emissions.
+	The most ambitious goal requires carbon removal to exceed 90 gigatonnes annually by the end of the century.
+	All scenarios for achieving climate stabilisation are mathematically achievable within the model,
+	however, few are likely to be practically feasible under current technological and economic conditions.
 \end{abstract}
 
 \vfill
@@ -69,7 +79,7 @@ where:
 \section{Introduction}
 Climate change is one of the most significant global environmental challenges,
 driven largely by anthropogenic greenhouse gas emissions from fossil fuel combustion,
-industrial processes and land-use changes \parencite{ipcc_2023}.
+industrial processes and land-use changes \cite{ipcc_2023}.
 The resulting emission of carbon dioxide (\cotwo{}) into the atmosphere has caused a sustained rise in global mean temperature,
 leading to widespread environmental challenges such as ecosystem degradation,
 extreme weather events and sea-level rise.
@@ -77,15 +87,15 @@ As part of the initiative of the Global Institute for Climate Change and the Env
 this report seeks to improve general understanding of the Earth’s climate
 and develop a simple mathematical model which reflects the goal of international governments to `stop' climate change.
 
-Human activities are the primary driver of increasing concentrations of \cotwo{} in the atmosphere \parencite{gcb_2025}.
+Human activities are the primary driver of increasing concentrations of \cotwo{} in the atmosphere \cite{gcb_2025}.
 Fossil fuel combustion, land-use changes and other industrial processes release large quantities of carbon
-which exceed the Earth's natural ability to absorb it through carbon sinks \parencite{gcb_2025}.
+which exceed the Earth's natural ability to absorb it through carbon sinks \cite{gcb_2025}.
 Emissions of \cotwo{} are determined by four key factors, being population, GDP per capita,
-energy intensity and carbon intensity \parencite{deutch_2017}.
+energy intensity and carbon intensity \cite{deutch_2017}.
 Although technological progress has reduced the carbon intensity of energy by
 approximately 0.7\% per year over the past decade,
 these improvements have been outweighed by increasing global energy demand as a result
-of the growing population \parencite{gcb_2025}.
+of the growing population \cite{gcb_2025}.
 Global anthropogenic \cotwo{} emissions have therefore continued to increase by 0.3\% per year in the decade 2015--2024.
 Encouragingly, however, fossil fuel emissions have decreased in 35 economies during the decade 2015--2024
 and emissions have slowed from 1.9\% in the decade 2005--2014,
@@ -93,23 +103,23 @@ demonstrating the success of partial decoupling of economic growth from emission
 
 Increased emissions of \cotwo{} into the atmosphere contribute substantially to higher concentrations of greenhouse gases
 which trap infrared radiation and thereby raise the global mean temperature.
-Global warming is roughly proportional to the cumulative sum of annual carbon emissions \parencite{matthews_2009},
+Global warming is roughly proportional to the cumulative sum of annual carbon emissions \cite{matthews_2009},
 the constant of proportionality being the Carbon-Climate Response (CCR).
 This relationship forms the basis of the Global Carbon Budget 2025\supercite{gcb_2025} (GCB),
 which aims to reduce cumulative emissions to limit long-term warming.
 The GCB estimates that each additional emission of 180 Gt\cotwo{} will lead to around 0.1\degree{C} of warming,
 leaving 170 Gt\cotwo{} remaining from the beginning of 2026 for a 50\% chance of limiting warming to 1.5\degree{C},
-which is equivalent to roughly four years of emissions at the current rate \parencite{gcb_2025}.
+which is equivalent to roughly four years of emissions at the current rate \cite{gcb_2025}.
 
 The rising global mean temperature has created significant environmental consequences,
 the particular focus of this report being sea-level rises.
 Sea-level rise continues even after temperature stabilisation due to the delayed response of oceans and melting ice sheets.
 The rate of sea level rise is approximately proportional to global temperature change over long time scales,
-so sea level rise can be modelled empirically from temperature \parencite{rahmstorf_2007}.
+so sea level rise can be modelled empirically from temperature \cite{rahmstorf_2007}.
 If warming is limited to 1.5\degree{C} above the pre-industrial baseline,
 substantial long-term sea level rise is still expected,
 and is projected to rise approximately 2--3 metres over the next 2,000 years,
-although there is low confidence in the exactness of these projections \parencite{gcb_2025}.
+although there is low confidence in the exactness of these projections \cite{gcb_2025}.
 Reducing future emissions has become increasingly important to achieve temperature stabilisation
 and minimise long term environmental impacts.
 
@@ -193,7 +203,7 @@ and evaluate the implications for the environment and humanity.
 To model temperature change, we modified the Transient Climate Response to
 Cumulative Carbon Emissions (TCRE) relationship\supercite{matthews_2009}.
 \citeauthor{matthews_2009} established a linear relationship between Global Surface Temperature anomaly
-and Cumulative Carbon Emissions done by humans, both since pre industrial levels, which we model as
+and Cumulative Carbon Emissions, both since pre industrial levels, which we model as
 \begin{equation}
 	\Delta T(t) \propto \int_{t_0}^t E(y) dy,	\label{eq:temp_emi}
 \end{equation}
@@ -201,12 +211,12 @@ and Cumulative Carbon Emissions done by humans, both since pre industrial levels
 	\item $t$ is time in years;
 	\item $t_0$ is the year we start measuring from;
 	\item $\Delta T(t)$ is the temperature change at time $t$ since $t_0$; and
-	\item $E(t)$ is the amount of \cotwo{} produced by humans in year $t$ measured in in tonnes.
+	\item $E(t)$ is the amount of \cotwo{} produced by humans in year $t$ measured in tonnes.
 }
 % where $\Delta T(t)$ represents temperature at time $t$, and $E$ represents annual emissions produced by humans.
 Note that emissions and \cotwo{} emissions are used interchangeably, as \cotwo{} accounts for a majority
 of the global heating due to greenhouse gas emissions,
-and a majority of greenhouse gases emitted \parencite{noaa_2025}.
+and a majority of greenhouse gases emitted \cite{noaa_2025}.
 
 We modify this by introducing a reduction term that subtracts from the emissions,
 representing human/technological efforts to directly remove carbon from the atmosphere.
@@ -215,7 +225,7 @@ This leads to a new equation, which is the primary model for the paper
 	\Delta T(t) \propto \int_{t_0}^t (E(y) - R(y)) dy,	\label{eq:temp_emi_rem}
 \end{equation}
 where $R$ is a function representing annual carbon reduction efforts.
-To model human carbon emissions $E$, we used the Kaya Identity \parencite{deutch_2017}, which states
+To model anthropogenic carbon emissions $E$, we used the Kaya Identity\supercite{deutch_2017}, which states
 \begin{equation*}
 	E(t) \propto \text{Population} \times \frac{\text{GDP}}{\text{Population}} \times \frac{\text{Energy used}}{\text{GDP}} \times \frac{\text{\cotwo{} produced}}{\text{Energy used}}.
 \end{equation*}
@@ -232,7 +242,7 @@ This gives a simplified Kaya Identity
 }
 
 
-\subsection{Sub Models}
+\subsection{Sub-Models}
 Next, we look at these terms in more detail.
 
 \subsubsection{Population}
@@ -248,7 +258,7 @@ The first iteration of modelling this was using a logistic equation, giving popu
 	\item $r_p$ is the rate of population growth, which has been fitted\supercite{our_code} to $\approx0.031$ in our model.
 }
 However, a weakness of logistic equations in modelling human population was that it did not capture realistic projections of human populations,
-which are projected to decline by the end of the century \parencite{un_population_2024},
+which are projected to decline by the end of the century\supercite{un_population_2024},
 while the logistic equation tends asymptotically to the carrying capacity.
 
 To better model the projections of falling populations in the future, we added a second logistic equation that subtracts from the original one.
@@ -279,13 +289,14 @@ It is modelled simply as an exponential, given as
 The terms $A_y$ and $r_y$ were fitted to historical data\supercite{our_code}.
 
 In the modelling scenarios, $Y$ is treated as a piecewise continuous function where,
-starting from 2027, the function changes its growth rate to a lower fraction of the original growth rate.
-For example, in the scenario 1 model, $r_y$ is swapped to $0.7r_y$, to demonstrate constrained and sustainable economic growth.
+starting from 2027, the function's growth rate reduces to a fraction of the original growth rate.
 
 The choice of exponential is appropriate for the period of time the model is relevant for.
-While GDP is effectively tied to population, as more population naturally means a higher GDP,
-GDP per capita is less tied to population as it is the average income or expenditure per person.
-This is tied to technological and productivity gains more so than population itself.
+
+While GDP is effectively related to population, as a larger population implies a rise in GDP,
+GDP per capita represents income per person,
+which is influenced more greatly by technological and productivity improvements than population.
+
 Technological and productivity gains are in turn, derived from a sizable working age population that continually innovate and improve \parencite{lindh_1999}.
 
 A sizable working age population will remain so long as there is a young workforce present in the world,
@@ -305,7 +316,8 @@ It is modelled as the exponential
 }
 Both of these terms were fitted to historical data\supercite{our_code}.
 
-The technology term is also used as a parameter in the scenarios, where the rate of growth of technology is altered starting from the year of action (2027).
+The technology term is also used as a parameter in the scenarios,
+where the rate of growth of technology is altered starting from the year of action (2027).
 For example, in scenario 1, we model technological improvements to be 1.5 times faster,
 directly improving energy intensity and carbon intensity 1.5x more than original projections.
 
@@ -314,7 +326,7 @@ directly improving energy intensity and carbon intensity 1.5x more than original
 
 In \autoref{eq:temp_emi_rem}, a reduction term was introduced.
 This represents another technological aspect to the model, representing human efforts to remove carbon from the atmosphere.
-Initially, natural carbon sinks were considered to be a part of the reduction term, but the TCRE relationship \parencite{matthews_2009}
+Initially, natural carbon sinks were considered to be a part of the reduction term, but the TCRE relationship\supercite{matthews_2009}
 implicitly accounts for natural sink behaviour in its model, specifically using cumulative human emissions.
 
 Hence, the reduction term must also denote human efforts to remove carbon from the atmosphere.
@@ -348,9 +360,7 @@ the temperature anomaly from pre industrial levels to predict long term trends, 
 	\item $\alpha$ is the proportionality constant, which was calculated\supercite{rahmstorf_2007} to be $3.4 \frac{mm}{year}$ per degree Celsius.
 }
 
-\draftmsg{We should have a function here, or something.}
-
-This model simplifies by not account for the lag between temperature and sea levels, mainly considering long-term trends and averages \parencite{rahmstorf_2007}.
+This model simplifies by not accounting for the lag between temperature and sea levels, mainly considering long-term trends and averages \cite{rahmstorf_2007}.
 
 
 \section{Results}
@@ -362,7 +372,7 @@ to find combinations of economy growth change, technological improvements, and a
 
 \subsection{Scenario 1}
 For a maximum target of 4\degree{C} above pre-industrial levels by 2100,
-we reduced the economy growth rate $r_y$ to 70\% of its original value and the technology improvement rate $r_d$ by 1.5 times.
+we reduced the economy growth rate $r_y$ to 70\% of its original value and increased the technology improvement rate $r_d$ by 1.5 times.
 
 Then we set our active removal $R$ to linearly ramp up to 3 Gt\cotwo{} per year by 2077 and continue,
 reaching and remaining at 5 Gt\cotwo{} per year.
@@ -382,7 +392,7 @@ Reducing the effectiveness of carbon removal by 90\% causes the temperature to i
 
 \subsection{Scenario 2}
 For a maximum target of 2\degree{C} above pre-industrial levels by 2050,
-we reduced the economy growth rate $r_y$ to 60\% of its original value and the technology improvement rate $r_d$ by 2 times.
+we reduced the economy growth rate $r_y$ to 60\% of its original value and increased the technology improvement rate $r_d$ by 2 times.
 
 Then we set our active removal $R$ to be a growing portion of the annual emissions.
 This ramps up to nearly 100\% by 2050, making it plateau afterward.
@@ -406,8 +416,9 @@ This scenario requires a maximum temperature anomaly of 1.5\degree{C} and for se
 Unfortunately, our temperature model in \autoref{fig:temp} indicates that we have already surpassed the 1.5\degree{C} target as of 2025.
 So we only consider the sea level requirement.
 
-From \autoref{eq:sea_diff}, we must have the temperature change reach 0 by 2100 for this to occur.
-So we model more aggressively, first reducing the economy growth rate $r_y$ to 50\% of its original value and the technology improvement rate $r_d$ by 2.5 times.
+From \autoref{eq:sea_diff}, we must have the temperature change reach 0\degree{C} by 2100 for this to occur.
+So we model more aggressively, first reducing the economy growth rate $r_y$ to 50\% of its original value and
+increasing the technology improvement rate $r_d$ by 2.5 times.
 For the active carbon removal, we follow a linear ramp, reaching 94.9 gigatonnes of \cotwo{} by 2100,
 then lowering efforts to match global emissions in order to keep temperature stable.
 
@@ -419,7 +430,7 @@ then lowering efforts to match global emissions in order to keep temperature sta
 	}
 	\label{fig:scen3}
 \end{figure}
-This results in a peak above 1.75\degree{C} before 2050, which drops to 0 before 2100.
+This results in a peak above 1.75\degree{C} before 2050, which drops to 0\degree{C} before 2100.
 Using the modelled temperature from \autoref{fig:scen3}, we can determine the expected sea levels.
 So from \autoref{eq:sea_diff}, we approximate the sea level increase since 2015
 \begin{equation*}
@@ -449,7 +460,9 @@ the true peak sea level could be much lower than what is predicted here.
 
 \section{Discussion}
 
-
+{
+	\Huge Woah, is there any discussion to be had?
+}
 
 
 \section{Conclusion}
@@ -457,7 +470,7 @@ the true peak sea level could be much lower than what is predicted here.
 The model that we have created suggests that climate change can be stabilised.
 However more ambitious targets require much stronger intervention whereby stabilising temperature requires net emissions to approach net zero
 and reducing temperature requires sustained net-negative emissions.
-Scenario 1 is the most realistically feasible, and Scenario 2 more advancements in technology and carbon remove methods in order to happen.
+Scenario 1 is the most realistically feasible, and Scenario 2 requires more advancements in technology and carbon remove methods in order to happen.
 But Scenario 3, while it is mathematically possible, is not feasible in the real world due to its extreme carbon-removal requirements.
 
 Our simplified model shows that technology and carbon removal must be complemented with rapid emissions reductions
@@ -478,7 +491,55 @@ These targets are mathematically possible, but under current trends, they are no
 \begin{appendices}
 \section{Appendix}
 
-This is working.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/pop.png}
+	\caption{
+		Population model compared to real world population, dataset from Our World in Data for years 1950--2023.
+		mean percentage error = 0.0987\%, percentage error stdev = 1.478\%
+	}
+	\label{fig:pop}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/gdppc.png}
+	\caption{
+		GDP per capita model compared to real world historical GDP, dataset from Our World in Data for years 1950--2025.
+		mean percentage error = 0.1199\%, percentage error stdev = 5.93\%
+	}
+	\label{fig:gdppc}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/tech_ineff.png}
+	\caption{
+		Technological inefficiency model compared to real world historical carbon intensity $\times$ energy intensity, dataset from Our World in Data for years 1965--2024.
+		mean percentage error = 0.061\%, percentage error stdev = 3.53\%
+	}
+	\label{fig:tech_ineff}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/co2.png}
+	\caption{
+		\cotwo{} model compared to real world historical \cotwo{} emissions, dataset from Our World in Data for years 1965--2024.
+		mean percentage error = -1.935\%, percentage error stdev = 5.5359\%
+	}
+	\label{fig:co2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/temp.png}
+	\caption{
+		Temperature model compared to real world historical temperature anomaly, dataset from Our World in Data for years 1850--2026.
+		mean error = <0.0003\degree{C}, error stdev = 0.1259\degree{C}
+	}
+	\label{fig:temp}
+\end{figure}
 
 \end{appendices}
 
