@@ -8,6 +8,7 @@
 \usepackage{amssymb}
 \usepackage{enumitem}
 \usepackage{gensymb}
+\usepackage{url}
 \usepackage{xcolor}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -22,7 +23,7 @@
     url=false, 
     doi=true
 ]{biblatex}
-\usepackage{url}
+
 \addbibresource{sources.bib}
 
 \usepackage{lmodern}
@@ -71,6 +72,7 @@ where:
 \end{abstract}
 
 \vfill
+\setcounter{tocdepth}{2}
 \tableofcontents
 \clearpage
 
@@ -217,7 +219,7 @@ of the global heating due to greenhouse gas emissions,
 and a majority of greenhouse gases emitted \cite{noaa_2025}.
 
 We modify this by introducing a reduction term that subtracts from the emissions,
-representing human/technological efforts to directly remove carbon from the atmosphere.
+representing technological efforts to directly remove carbon from the atmosphere.
 This leads to a new equation, which is the primary model for the paper
 \begin{equation}
 	\Delta T(t) \propto \int_{t_0}^t (E(y) - R(y)) dy,	\label{eq:temp_emi_rem}
@@ -457,9 +459,50 @@ the true peak sea level could be much lower than what is predicted here.
 
 \section{Discussion}
 
-{
-	\Huge Woah, is there any discussion to be had?
-}
+Our three scenarios showcase that more ambitious climate change targets require increasingly large changes to the economic,
+technological and carbon-removal components of the model.
+In scenario 1, GDP per capita growth is reduced to 70\% of the original projection,
+technology improves 1.5 times faster and carbon removal gradually increases.
+This is the most feasible scenario as the required changes are comparatively moderate
+despite assumptions in improvements to efficiency and carbon intensity over a long period of time.
+The main hurdle is that slower economic growth and improved technology can substantially reduce warming, but does not `stop' it.
+
+Scenario 2 requires significantly stronger intervention as GDP per capita growth is reduced to 60\% of the baseline
+and technological improvement is doubled.
+Carbon removal also rises more rapidly so that net emissions approach zero,
+thus allowing temperature to stabilise just below 2\degree{C}.
+While this is mathematically achievable within the constraints of our model,
+it is significantly less feasible in practice as it depends on sooner and more significant reductions in emissions,
+along with more rapid developments to technology.
+This suggests that delaying action on the variables in practice increases the amount of carbon removal required over time.
+
+Scenario 3 is the least realistically feasible,
+whereby GDP per capita growth is reduced to 50\% of the original projection,
+technology improves 2.5 times more quickly and carbon removal exceeds 90 gigatons by the end of the century.
+These changes are necessary, as under the \citeauthor{rahmstorf_2007} sea level model,
+sea levels are predicted to continue to rise as long as temperatures remain above the pre-industrial baseline.
+Therefore, halting sea level rise requires temperatures to approach the pre-industrial baseline,
+which requires sustained net-negative emissions.
+While this outcome is mathematically feasible within our model,
+the scale of carbon removal required makes it very impractical and unrealistic given current technological conditions.
+
+Population remains unchanged across all three scenarios thus meaning that stricter climate targets rely on reducing emissions
+through slower GDP growth, faster technological improvement and greater carbon removal as opposed to demographic change.
+However, if the population were to decline in the future, our model would predict lower annual emissions,
+assuming other factors remain unchanged including any exogenous events such as military conflict, pandemics or global financial crises
+that could affect mortality or birthrates.
+This would reduce cumulative emissions, thus lowering the projected temperature trajectories and sea level rise trajectories.
+However, since population and economic growth are modelled separately,
+our model does not account for how any substantial declines in population could affect economic activity or developments in technology.
+
+Many limitations should be considered when interpreting the results produced by our model.
+The model simplifies complex climate and socioeconomics by using fixed functional forms for population,
+GDP growth and technological improvement, all whilst combining energy intensity and carbon intensity into a single technology term.
+The carbon removal term is also able to increase to the level required by each scenario without directly accounting
+for real world constraints such as costs, technology infrastructure and energy demands.
+Additionally the TCRE and \citeauthor{rahmstorf_2007} relationships provide simplified representations of temperature and sea level responses.
+Future research could address these limitations by applying more realistically feasible limits to carbon removal
+and by testing alternative population and economic pathways and incorporating more detailed climate and sea level feedbacks.
 
 
 \section{Conclusion}
@@ -522,7 +565,7 @@ These targets are mathematically possible, but under current trends, they are no
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/co2.png}
+	\includegraphics[width=0.9\textwidth]{assets/co2.png}
 	\caption{
 		\cotwo{} model compared to real world historical \cotwo{} emissions, dataset from Our World in Data for years 1965--2024.
 		mean percentage error = -1.935\%, percentage error stdev = 5.5359\%
@@ -532,7 +575,7 @@ These targets are mathematically possible, but under current trends, they are no
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/temp.png}
+	\includegraphics[width=0.9\textwidth]{assets/temp.png}
 	\caption{
 		Temperature model compared to real world historical temperature anomaly, dataset from Our World in Data for years 1850--2026.
 		mean error = <0.0003\degree{C}, error stdev = 0.1259\degree{C}
@@ -542,7 +585,8 @@ These targets are mathematically possible, but under current trends, they are no
 
 \subsection{Our Code}
 
-We have included the code used to model in our bibliography \cite{our_code} \textcite{our_code}.
+We have included the code used to model in our bibliography.
+But the link is included here: \url{https://github.com/vedangpurohit21/modelling3041}.
 
 \end{appendices}
 
