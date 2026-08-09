@@ -78,7 +78,7 @@ MODEL_PRE_YEARS = 20
 WORLD_MAX_POP = 12_000_000_000
 SENSITIVITY = 1 # removal sensitivity: set to 1 for perfect removal (100%), or a fraction to test sensitivity if targets are off by X%
 
-# Actual population, GDP per capita -> model P, E_P
+# Actual population, GDP per capita -> model P, Y
 pop_years = []
 pop_levels = []
 gdppc_years = []
@@ -302,7 +302,7 @@ def gdppc(_ty):
 
 
 
-print('*** Carbon intensity × energy intensity (∝ D^-1)')
+print('*** Carbon intensity × energy intensity (∝ D)')
 plt.subplot(1, 2, 1)
 plt.title('Carbon intensity × energy intensity – Logarithmic')
 plt.xlabel('Year')
@@ -388,6 +388,10 @@ if not (output_flags['technology'] or output_all):
 else:
     plt.show()
 def d_inv(_td):
+    """
+    Called 'D inverse' because technological inefficiency was
+    previously considered the inverse of technological efficiency.
+    """
     return exp(m_dinv * _td + b_dinv)
 
 
@@ -400,26 +404,25 @@ plt.title('Annual CO₂ Emissions')
 plt.xlabel('Year')
 plt.ylabel('CO₂ Emissions (10 Gt)')
 plt.grid()
-model_years = list(range(CO2_YEAR_INIT - MODEL_PRE_YEARS, YEAR_END))
+model_years = list(range(KAYA_YEAR_INIT - MODEL_PRE_YEARS, YEAR_END))
 
-# plt.plot(kaya_years[0], carbon_emi_levels[0] / 10_000_000_000, label='World Actual', marker='.', markerfacecolor='None', linestyle='None', color='tab:green')
-plt.plot(co2_years, co2_levels / 10_000_000_000, label='World Actual', marker='.', markerfacecolor='None', linestyle='None', color='tab:green')
+plt.plot(kaya_years[0], carbon_emi_levels[0] / 10_000_000_000, label='World Actual', marker='.', markerfacecolor='None', linestyle='None', color='tab:green')
+# plt.plot(co2_years, co2_levels / 10_000_000_000, label='World Actual', marker='.', markerfacecolor='None', linestyle='None', color='tab:green')
 
 # Linear scan for best value for k
 ## Optimise for lowest absolute mean
-kd = 1298384  # Found previously
+kd = 1_300_000
 mean = -4
 model_emis = []
 while True:
     model_emis = [population(y) * gdppc(y) * d_inv(y) / kd for y in model_years]
 
-    error = [model_emi/actual_emi - 1 for actual_emi, model_emi in zip(co2_levels, model_emis[MODEL_PRE_YEARS:])]
+    error = [model_emi/actual_emi - 1 for actual_emi, model_emi in zip(carbon_emi_levels[0], model_emis[MODEL_PRE_YEARS:])]
+    # error = [model_emi/actual_emi - 1 for actual_emi, model_emi in zip(co2_levels, model_emis[MODEL_PRE_YEARS:])]
     mean = sum(error) / len(error)
 
-    break   # Not going to manually tweak k for now
     if mean > 0:
-        # break
-        pass
+        break
 
     kd -= 1
 
@@ -431,7 +434,8 @@ error_mean_diffs = [e - mean for e in error]
 variance = sum(e * e for e in error_mean_diffs) / len(error)
 
 print(f'k = {k:.15f}')
-print(f'World model: {co2_years.iloc[0]}–{co2_years.iloc[-1]}')
+print(f'World model: {kaya_years[0].iloc[0]}–{kaya_years[0].iloc[-1]}')
+# print(f'World model: {co2_years.iloc[0]}–{co2_years.iloc[-1]}')
 print('\t% error mean  =', mean * 100)
 print('\t% error stdev =', sqrt(variance) * 100)
 
@@ -464,7 +468,7 @@ plt.plot(temp_years, actual_temps, label='World Actual', marker='.', markerfacec
 k_temp = Decimal(1) / Decimal(1.5 * 10 ** 12)   # temp
 
 model_temps = [0.]
-kd = 1.4 * 10 ** 12
+kd = 1.5 * 10 ** 12
 mean = -1
 while True:
     model_temps = [0.]
@@ -620,7 +624,7 @@ def scenario_2_emissions(year):
 def removal_scenario_2_proportion(year):
     if year < MAGIC_YEAR:
         return 0
-    return 2/(1 + exp(-0.08 * (year - MAGIC_YEAR))) - 1
+    return 2/(1 + exp(-0.07 * (year - MAGIC_YEAR))) - 1
 
 def removal_scenario_2(year):
     return SENSITIVITY * scenario_2_emissions(year) * removal_scenario_2_proportion(year)
@@ -662,11 +666,11 @@ def scenario_3_emissions(year):
 def removal_scenario_3(year):
     if year < MAGIC_YEAR:
         return 0
-    if year > 2095:
+    if year > 2100:
         return scenario_emissions(year, 3)
     # Linear growth of CO2 removal year on year after MAGIC_YEAR
-    # Aim for 30 Gtonnes in 20 years, and continue to grow linearly
-    return SENSITIVITY * 1/20 * 30 * 10**9 * (year - MAGIC_YEAR)
+    # Aim for 26 Gtonnes in 20 years, and continue to grow linearly
+    return SENSITIVITY * 1/20 * 26 * 10**9 * (year - MAGIC_YEAR)
 
 
 plt.title('Scenario 3 – Active Carbon Removal')
