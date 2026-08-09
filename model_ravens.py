@@ -76,6 +76,7 @@ KAYA_YEAR_INIT = 1965
 YEAR_END = 2110
 MODEL_PRE_YEARS = 20
 WORLD_MAX_POP = 12_000_000_000
+SENSITIVITY = 1 # removal sensitivity: set to 1 for perfect removal (100%), or a fraction to test sensitivity if targets are off by X%
 
 # Actual population, GDP per capita -> model P, E_P
 pop_years = []
@@ -560,7 +561,7 @@ def removal_scenario_1_proportion(year):
 def removal_scenario_1(year):
     if year < MAGIC_YEAR:
         return 0
-    return min(5 * 10**9, 1/50 * 3 * 10**9 * (year - MAGIC_YEAR))
+    return min(SENSITIVITY * 5 * 10**9, 1/50 * 3 * 10**9 * (year - MAGIC_YEAR))
     # return scenario_1_emissions(year) * removal_scenario_1_proportion(year)
 
 plt.title('Scenario 1 – Active Carbon Removal')
@@ -622,7 +623,7 @@ def removal_scenario_2_proportion(year):
     return 2/(1 + exp(-0.08 * (year - MAGIC_YEAR))) - 1
 
 def removal_scenario_2(year):
-    return scenario_2_emissions(year) * removal_scenario_2_proportion(year)
+    return SENSITIVITY * scenario_2_emissions(year) * removal_scenario_2_proportion(year)
 
 plt.title('Scenario 2 – Active Carbon Removal')
 plt.xlabel('Year')
@@ -665,7 +666,7 @@ def removal_scenario_3(year):
         return scenario_emissions(year, 3)
     # Linear growth of CO2 removal year on year after MAGIC_YEAR
     # Aim for 30 Gtonnes in 20 years, and continue to grow linearly
-    return 1/20 * 30 * 10**9 * (year - MAGIC_YEAR)
+    return SENSITIVITY * 1/20 * 30 * 10**9 * (year - MAGIC_YEAR)
 
 
 plt.title('Scenario 3 – Active Carbon Removal')
@@ -704,6 +705,7 @@ for m in model_temps:
     new_state = 3.4 * m + last_state
     sea_levels.append(new_state)
     last_state = new_state
+print("Scenario 3 final sea level:", sea_levels[-1], "mm.")
 
 
 plt.title('Scenario 3 – Sea levels')
