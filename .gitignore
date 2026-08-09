@@ -2,5 +2,5 @@ tex/*
 !tex/report.pdf
 !tex/report.tex
 !tex/sources.bib
-!tex/assets/*
+!tex/assets
 *.DS_Store

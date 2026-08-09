@@ -1,6 +1,7 @@
 \documentclass[11pt]{article}
 \usepackage[a4paper,margin=1in]{geometry}
 \usepackage{graphicx}
+\usepackage{float}
 \usepackage{tabularx}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -222,18 +223,17 @@ In other words, \cotwo{} emissions is the product of population, GDP per capita,
 To simplify our model, we capture the product of the latter two as technological inefficiency $D$ in terms of GDP per tonne of \cotwo{}.
 This gives a simplified Kaya Identity
 \begin{equation}
-	E(t) \propto P(t) \cdot Y(t) \cdot D(t),	\label{eq:emi_pyd}
+	E \propto PYD,	\label{eq:emi_pyd}
 \end{equation}
 \wherevars{
 	\item $P$ is population;
-	\item $Y$ denotes GDP per capita; and
+	\item $Y$ denotes global average GDP per capita; and
 	\item $D$ is the technological inefficiency term.
 }
 
-\noindent Next, we look at these terms in more detail.
-
 
 \subsection{Sub Models}
+Next, we look at these terms in more detail.
 
 \subsubsection{Population}
 Population is not an aspect of the model that will be altered as a parameter in the scenarios.
@@ -338,7 +338,7 @@ For this, \citeauthor{rahmstorf_2007}'s semi empirical approach to projecting se
 Here, \citeauthor{rahmstorf_2007}'s model approximated the rate of change of sea levels to be proportional to
 the temperature anomaly from pre industrial levels to predict long term trends, which solves our purpose.
 \citeauthor{rahmstorf_2007}'s model stated
-\begin{equation}
+\begin{equation}	\label{eq:sea_diff}
 	\frac{dH}{dt} = \alpha(T - T_0),
 \end{equation}
 \wherevars{
@@ -348,16 +348,121 @@ the temperature anomaly from pre industrial levels to predict long term trends, 
 	\item $\alpha$ is the proportionality constant, which was calculated\supercite{rahmstorf_2007} to be $3.4 \frac{mm}{year}$ per degree Celsius.
 }
 
+\draftmsg{We should have a function here, or something.}
+
 This model simplifies by not account for the lag between temperature and sea levels, mainly considering long-term trends and averages \parencite{rahmstorf_2007}.
 
 
 \section{Results}
 
+We have been given a set of scenarios to model, each with specific temperature targets and dates.
+So we simulate efforts to actively remove carbon from the atmosphere from 2027.
+In addition to the active carbon removal, we also adjust the growth rate of $Y$ and decay rate of $D$ after that year
+to find combinations of economy growth change, technological improvements, and active removal that satisfy the scenarios.
+
+\subsection{Scenario 1}
+For a maximum target of 4\degree{C} above pre-industrial levels by 2100,
+we reduced the economy growth rate $r_y$ to 70\% of its original value and the technology improvement rate $r_d$ by 1.5 times.
+
+Then we set our active removal $R$ to linearly ramp up to 3 Gt\cotwo{} per year by 2077 and continue,
+reaching and remaining at 5 Gt\cotwo{} per year.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/scen1.png}
+	\caption{
+		Scenario 1 active \cotwo{} removal and resulting temperature projections
+	}
+	\label{fig:scen1}
+\end{figure}
+
+So in this model, the temperature anomaly remains under 4\degree{C} until the year 2250, plateauing from there (see Appendix).
+Reducing the effectiveness of carbon removal by 90\% causes the temperature to increase by 3.17\degree{C} in 2100, plateauing above 4.1\degree{C} after 2250.
+
+
+\subsection{Scenario 2}
+For a maximum target of 2\degree{C} above pre-industrial levels by 2050,
+we reduced the economy growth rate $r_y$ to 60\% of its original value and the technology improvement rate $r_d$ by 2 times.
+
+Then we set our active removal $R$ to be a growing portion of the annual emissions.
+This ramps up to nearly 100\% by 2050, making it plateau afterward.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/scen2.png}
+	\caption{
+		Scenario 2 active \cotwo{} removal and resulting temperature projections
+	}
+	\label{fig:scen2}
+\end{figure}
+
+So in this model, the temperature change remains under 1.9\degree{C} in 2050, and remains under 2\degree{C}.
+If we consider a situation where removal is only 90\% of the target,
+the model reaches 2\degree{C} by 2070, and reaches about 2.1\degree{C}.
+
+
+\subsection{Scenario 3}
+This scenario requires a maximum temperature anomaly of 1.5\degree{C} and for sea levels to stop rising by 2100.
+Unfortunately, our temperature model in \autoref{fig:temp} indicates that we have already surpassed the 1.5\degree{C} target as of 2025.
+So we only consider the sea level requirement.
+
+From \autoref{eq:sea_diff}, we must have the temperature change reach 0 by 2100 for this to occur.
+So we model more aggressively, first reducing the economy growth rate $r_y$ to 50\% of its original value and the technology improvement rate $r_d$ by 2.5 times.
+For the active carbon removal, we follow a linear ramp, reaching 94.9 gigatonnes of \cotwo{} by 2100,
+then lowering efforts to match global emissions in order to keep temperature stable.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{assets/scen3.png}
+	\caption{
+		Scenario 3 active \cotwo{} removal and resulting temperature projections
+	}
+	\label{fig:scen3}
+\end{figure}
+This results in a peak above 1.75\degree{C} before 2050, which drops to 0 before 2100.
+Using the modelled temperature from \autoref{fig:scen3}, we can determine the expected sea levels.
+So from \autoref{eq:sea_diff}, we approximate the sea level increase since 2015
+\begin{equation*}
+	H(t) = \alpha \int_{2015}^t (T(y) - T_0)dy,
+\end{equation*}
+with results shown in \autoref{fig:scen3_sea}.
+In this model, the sea levels stop rising at 381 mm higher than in 2015.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{assets/scen3_sea.png}
+	\caption{
+		Scenario 3 model sea levels since 2015
+	}
+	\label{fig:scen3_sea}
+\end{figure}
+
+If the removal efforts were only 90\% as effective in this model, the linearly increasing effort to remove \cotwo{} would need to
+continue for four additional years in order to bring temperatures back to pre-industrial levels.
+This would also cause the projected sea level increase to 404 mm, about 23 mm higher than the original prediction.
+\\
+An additional factor not considered in this model is the temperature lag for the ocean.
+The effects of temperature change may be reflected decades later in the ocean.
+Since this model would bring the temperature down before the ocean levels finished rising,
+the true peak sea level could be much lower than what is predicted here.
+
 
 \section{Discussion}
 
 
+
+
 \section{Conclusion}
+
+The model that we have created suggests that climate change can be stabilised.
+However more ambitious targets require much stronger intervention whereby stabilising temperature requires net emissions to approach net zero
+and reducing temperature requires sustained net-negative emissions.
+Scenario 1 is the most realistically feasible, and Scenario 2 more advancements in technology and carbon remove methods in order to happen.
+But Scenario 3, while it is mathematically possible, is not feasible in the real world due to its extreme carbon-removal requirements.
+
+Our simplified model shows that technology and carbon removal must be complemented with rapid emissions reductions
+as opposed to outright replacing it.
+These targets are mathematically possible, but under current trends, they are not yet practically feasible.  
 
 
 \section{Bibliography}
