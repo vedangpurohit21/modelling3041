@@ -340,7 +340,7 @@ plt.legend()
 plt.subplot(1, 2, 2)
 plt.title('Carbon intensity × energy intensity')
 plt.xlabel('Year')
-plt.ylabel('The product')
+plt.ylabel('The product (GtCO2 / GDP)')
 plt.grid()
 for i, (years, energy_ints, carbon_ints) in enumerate(zip(kaya_years, energy_int_levels, carbon_int_levels)):
     product_intensities = [e * c for e, c in zip(energy_ints, carbon_ints)]
@@ -412,7 +412,7 @@ plt.plot(kaya_years[0], carbon_emi_levels[0] / 10_000_000_000, label='World Actu
 # Linear scan for best value for k
 ## Optimise for lowest absolute mean
 kd = 1_300_000
-mean = -4
+mean = 1
 model_emis = []
 while True:
     model_emis = [population(y) * gdppc(y) * d_inv(y) / kd for y in model_years]
@@ -421,10 +421,10 @@ while True:
     # error = [model_emi/actual_emi - 1 for actual_emi, model_emi in zip(co2_levels, model_emis[MODEL_PRE_YEARS:])]
     mean = sum(error) / len(error)
 
-    if mean > 0:
+    if mean < 0:
         break
 
-    kd -= 1
+    kd += 1
 
 k = Decimal(1) / kd
 plt.plot(model_years, [e / 10_000_000_000 for e in model_emis], label=f'Model (k = 1 / {kd})', linestyle='--', color='tab:green')
@@ -568,15 +568,16 @@ def removal_scenario_1(year):
     return min(SENSITIVITY * 5 * 10**9, 1/50 * 3 * 10**9 * (year - MAGIC_YEAR))
     # return scenario_1_emissions(year) * removal_scenario_1_proportion(year)
 
+plt.subplot(1, 2, 1)
 plt.title('Scenario 1 – Active Carbon Removal')
 plt.xlabel('Year')
 plt.ylabel('Carbon Removal (Gtonnes)')
 plt.plot(modelling_years, [removal_scenario_1(y) / 1_000_000_000 for y in modelling_years], marker='.', linestyle='None')
 plt.grid()
-if not (output_flags['scenario1'] or output_all):
-    plt.clf()
-else:
-    plt.show()
+# if not (output_flags['scenario1'] or output_all):
+#     plt.clf()
+# else:
+#     plt.show()
 
 model_temps = [0.]
 for y in modelling_years[1:]:
@@ -584,6 +585,7 @@ for y in modelling_years[1:]:
 model_temps = [float(k_temp) * m for m in model_temps]
 model_temps = [m + actual_model_temps[modelling_years[0] - TEMP_YEAR_INIT] for m in model_temps]
 
+plt.subplot(1, 2, 2)
 plt.title('Scenario 1 – Trajectory')
 plt.xlabel('Year')
 plt.ylabel('Temperature anomaly (°C)')
@@ -629,15 +631,16 @@ def removal_scenario_2_proportion(year):
 def removal_scenario_2(year):
     return SENSITIVITY * scenario_2_emissions(year) * removal_scenario_2_proportion(year)
 
+plt.subplot(1, 2, 1)
 plt.title('Scenario 2 – Active Carbon Removal')
 plt.xlabel('Year')
 plt.ylabel('Carbon Removal (Gtonnes)')
 plt.plot(modelling_years, [removal_scenario_2(y) / 1_000_000_000 for y in modelling_years], marker='.', linestyle='None')
 plt.grid()
-if not (output_flags['scenario2'] or output_all):
-    plt.clf()
-else:
-    plt.show()
+# if not (output_flags['scenario2'] or output_all):
+#     plt.clf()
+# else:
+#     plt.show()
 
 model_temps = [0.]
 for y in modelling_years[1:]:
@@ -645,6 +648,7 @@ for y in modelling_years[1:]:
 model_temps = [float(k_temp) * m for m in model_temps]
 model_temps = [m + actual_model_temps[modelling_years[0] - TEMP_YEAR_INIT] for m in model_temps]
 
+plt.subplot(1, 2, 2)
 plt.title('Scenario 2 – Trajectory')
 plt.xlabel('Year')
 plt.ylabel('Temperature anomaly (°C)')
@@ -666,22 +670,23 @@ def scenario_3_emissions(year):
 def removal_scenario_3(year):
     if year < MAGIC_YEAR:
         return 0
-    if year > 2100:
+    if year > 2104:
         return scenario_emissions(year, 3)
     # Linear growth of CO2 removal year on year after MAGIC_YEAR
     # Aim for 26 Gtonnes in 20 years, and continue to grow linearly
     return SENSITIVITY * 1/20 * 26 * 10**9 * (year - MAGIC_YEAR)
 
 
+plt.subplot(1, 2, 1)
 plt.title('Scenario 3 – Active Carbon Removal')
 plt.xlabel('Year')
 plt.ylabel('Carbon Removal (Gtonnes)')
 plt.plot(modelling_years, [removal_scenario_3(y) / 1_000_000_000 for y in modelling_years], marker='.', linestyle='None')
 plt.grid()
-if not (output_flags['scenario3'] or output_all):
-    plt.clf()
-else:
-    plt.show()
+# if not (output_flags['scenario3'] or output_all):
+#     plt.clf()
+# else:
+#     plt.show()
 
 
 model_temps = [0.]
@@ -690,6 +695,7 @@ for y in modelling_years[1:]:
 model_temps = [float(k_temp) * m for m in model_temps]
 model_temps = [m + actual_model_temps[modelling_years[0] - TEMP_YEAR_INIT] for m in model_temps]
 
+plt.subplot(1, 2, 2)
 plt.title('Scenario 3 – Trajectory')
 plt.xlabel('Year')
 plt.ylabel('Temperature anomaly (°C)')

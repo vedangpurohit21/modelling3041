@@ -33,11 +33,9 @@
 \renewcommand{\thefootnote}{\alph{footnote}}
 \renewcommand{\thebibliography}{}
 \renewcommand{\textcite}[1]{\citeauthor{#1} (\citeyear{#1})}
-\renewcommand{\parencite}[1]{(\citeauthor{#1}, \citeyear{#1})}
 
 \newcommand{\fin}{\text{final}}
 \newcommand{\init}{\text{initial}}
-\newcommand{\draftmsg}[1]{\textbf{\color{red} #1}}
 
 \newcommand{\wherevars}[1]{
 where:
@@ -297,10 +295,9 @@ While GDP is effectively related to population, as a larger population implies a
 GDP per capita represents income per person,
 which is influenced more greatly by technological and productivity improvements than population.
 
-Technological and productivity gains are in turn, derived from a sizable working age population that continually innovate and improve \parencite{lindh_1999}.
-
+Technological and productivity gains are in turn, derived from a sizable working age population that continually innovate and improve \cite{lindh_1999}.
 A sizable working age population will remain so long as there is a young workforce present in the world,
-and this is the case for at least until 2100, even with the diminishing population towards the end of the century.
+and this is the case for at least until 2100, even with the diminishing population towards the end of the century \cite{un_population_2024}.
 
 
 \subsubsection{Technological Inefficiency}
@@ -491,6 +488,8 @@ These targets are mathematically possible, but under current trends, they are no
 \begin{appendices}
 \section{Appendix}
 
+\subsection{Figures}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/pop.png}
@@ -540,6 +539,10 @@ These targets are mathematically possible, but under current trends, they are no
 	}
 	\label{fig:temp}
 \end{figure}
+
+\subsection{Our Code}
+
+We have included the code used to model in our bibliography \cite{our_code} \textcite{our_code}.
 
 \end{appendices}
 
