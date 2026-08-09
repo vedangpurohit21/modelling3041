@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[12pt]{article}
 \usepackage[a4paper,margin=1in]{geometry}
 \usepackage{graphicx}
 \usepackage{float}
@@ -50,8 +50,8 @@ where:
 \endgroup
 }
 
-\title{Can we `stop' global warming?}
-\author{Abba, Baba, Caba, Daba}
+\title{\vspace{-1cm} Can we `stop' global warming?}
+\author{Abba, Baba, Caba, Daba}		% Names anonymised for this repo
 
 \begin{document}
 
@@ -77,113 +77,64 @@ where:
 \clearpage
 
 \section{Introduction}
+
 Climate change is one of the most significant global environmental challenges,
 driven largely by anthropogenic greenhouse gas emissions from fossil fuel combustion,
 industrial processes and land-use changes \cite{ipcc_2023}.
-The resulting emission of carbon dioxide (\cotwo{}) into the atmosphere has caused a sustained rise in global mean temperature,
-leading to widespread environmental challenges such as ecosystem degradation,
-extreme weather events and sea-level rise.
+The resulting carbon dioxide (\cotwo{}) emissions into the atmosphere has caused a sustained rise in global mean temperature,
+leading to widespread environmental challenges.
 As part of the initiative of the Global Institute for Climate Change and the Environment (GICCE),
-this report seeks to improve general understanding of the Earth’s climate
-and develop a simple mathematical model which reflects the goal of international governments to `stop' climate change.
+this report seeks to improve general understanding of the Earth’s climate and develop a simple mathematical model
+which reflects the goal of international governments to `stop' climate change.
 
-Human activities are the primary driver of increasing concentrations of \cotwo{} in the atmosphere \cite{gcb_2025}.
+Human activities are the primary driver of increasing atmospheric \cotwo{} \cite{ipcc_2023}.
 Fossil fuel combustion, land-use changes and other industrial processes release large quantities of carbon
 which exceed the Earth's natural ability to absorb it through carbon sinks \cite{gcb_2025}.
-Emissions of \cotwo{} are determined by four key factors, being population, GDP per capita,
-energy intensity and carbon intensity \cite{deutch_2017}.
-Although technological progress has reduced the carbon intensity of energy by
-approximately 0.7\% per year over the past decade,
-these improvements have been outweighed by increasing global energy demand as a result
-of the growing population \cite{gcb_2025}.
-Global anthropogenic \cotwo{} emissions have therefore continued to increase by 0.3\% per year in the decade 2015--2024.
-Encouragingly, however, fossil fuel emissions have decreased in 35 economies during the decade 2015--2024
-and emissions have slowed from 1.9\% in the decade 2005--2014,
-demonstrating the success of partial decoupling of economic growth from emissions through technological changes.
-
-Increased emissions of \cotwo{} into the atmosphere contribute substantially to higher concentrations of greenhouse gases
-which trap infrared radiation and thereby raise the global mean temperature.
-Global warming is roughly proportional to the cumulative sum of annual carbon emissions \cite{matthews_2009},
-the constant of proportionality being the Carbon-Climate Response (CCR).
-This relationship forms the basis of the Global Carbon Budget 2025\supercite{gcb_2025} (GCB),
-which aims to reduce cumulative emissions to limit long-term warming.
-The GCB estimates that each additional emission of 180 Gt\cotwo{} will lead to around 0.1\degree{C} of warming,
-leaving 170 Gt\cotwo{} remaining from the beginning of 2026 for a 50\% chance of limiting warming to 1.5\degree{C},
-which is equivalent to roughly four years of emissions at the current rate \cite{gcb_2025}.
-
-The rising global mean temperature has created significant environmental consequences,
-the particular focus of this report being sea-level rises.
-Sea-level rise continues even after temperature stabilisation due to the delayed response of oceans and melting ice sheets.
-The rate of sea level rise is approximately proportional to global temperature change over long time scales,
-so sea level rise can be modelled empirically from temperature \cite{rahmstorf_2007}.
-If warming is limited to 1.5\degree{C} above the pre-industrial baseline,
-substantial long-term sea level rise is still expected,
-and is projected to rise approximately 2--3 metres over the next 2,000 years,
-although there is low confidence in the exactness of these projections \cite{gcb_2025}.
-Reducing future emissions has become increasingly important to achieve temperature stabilisation
-and minimise long term environmental impacts.
-
-
-\section{Literature Review}
-
-The mathematical model produced in this report will quantify interactions between human activity
-and the climate system to assess future climate scenarios.
-The following literature will be considered according to how effectively each model captures
-the relationships required for this investigation and how appropriate their assumptions are for our simple model.
-
-\textcite{matthews_2009} related \cotwo{} emissions to global temperature.
-Using coupled climate-carbon cycle models, the authors found a linearly proportional relationship
-between global warming and cumulative carbon emissions from semi-empirical sources.
-The CCR is estimated to be approximately 1--2.1\degree{C} of warming per trillion tonnes of carbon emitted\supercite{matthews_2009}.
-This relationship is independent of time and atmospheric concentrations.
-Further, the model captures the processes of the carbon cycle,
-and offsets the effects of carbon uptake into the atmosphere on temperature against carbon sink saturation.
-This makes cumulative emissions highly useful for examining scenarios in which temperature is required to stabilise.
-However, \citeauthor{matthews_2009} calculated that there is substantial uncertainty on the model,
-being 0.4--1.5 Tt\cotwo{}.
-This is due to the various assumptions on which the relationship relies.
-For example, the authors assume that other greenhouse gases and non-greenhouse gases contribute negligibly to global warming.
-Further, estimates for historic land-use changes and aerosol forcing from limited available data is assumed to be accurate.
-However, uncertainty in this data would have great effects on the CCR value.
-The authors also note that their results are derived from idealised climate-carbon model scenarios over decades to centuries,
-meaning that extrapolation over longer time scales may not produce accurate results.
-The model produced in this report will only rely on \citeauthor{matthews_2009}’s linear relationship,
-and will estimate a constant of proportionality which is solely based on empirical data.
-
-The Kaya Identity provides a complementary expression for determining annual \cotwo{} emissions.
-The identity decomposes annual \cotwo{} into a product of population, GDP per capita, energy intensity and carbon intensity.
-\textcite{deutch_2017} uses this expression to examine the relationship between economic growth and emissions,
-and demonstrates that improvements in energy and carbon intensity can weaken the relationship between economic growth and \cotwo{} emissions.
+The Kaya Identity provides an expression for determining annual \cotwo{} emissions.
+The identity decomposes \cotwo{} into a product of population, GDP per capita, energy intensity and carbon intensity.
+\textcite{deutch_2017}\supercite{deutch_2017} uses this expression to examine the relationship between economic growth and emissions,
+and demonstrates that improvements in energy and carbon intensity can weaken this relationship.
 This is important for the purposes of the current report as it allows a framework for proposing technological changes
 to produce a reduction in annual emissions.
-However, the Kaya Identity is not a causal model,
-so it cannot predict how the terms in the model will respond to technological development,
-government policy or changes in the markets.
-So, the reliability of the projections in that article are questionable.
-This report aims to adopt the relationship established by the Kaya Identity.
-However, it will assume that technological advancements have a direct impact on energy and carbon intensity.
-The GCB provides empirical critiques against the assumptions of the model.
-\textcite{gcb_2025} states that global emissions have not yet reached sustained decline
-despite energy and carbon intensity improvements,
-but also identifies evidence of partial decoupling.
-Our model must be closely examined against observed trends.
+The \citetitle{gcb_2025} (GCB) provides empirical critiques against the assumptions of the model.
+\textcite{gcb_2025} states that global emissions have not yet reached a sustained decline despite energy and carbon intensity improvements,
+which is why global anthropogenic \cotwo{} emissions have continued to increase by 0.3\% per year in the decade 2015--2024.
+However, it also identifies evidence of partial decoupling.
+This report aims to adopt the relationship established by the Kaya Identity,
+but it will assume that technological advancements have a direct impact on energy and carbon intensity.
+Our model must also be closely examined against observed trends.
+
+\textcite{matthews_2009}\supercite{matthews_2009} found a linearly proportional relationship
+between global warming and cumulative carbon emissions from semi-empirical sources.
+The constant of proportionality is the Climate-Carbon Response (CCR), which is estimated to be approximately 1--2.1\degree{C}
+of warming per trillion tonnes of carbon (TtC) emitted.
+This makes cumulative emissions highly useful for examining scenarios in which temperature is required to stabilise.
+However, \citeauthor{matthews_2009} calculated substantial uncertainty on the model.
+This is due to the various assumptions on which the relationship relies,
+including that other greenhouse gases and non-greenhouse gases contribute negligibly to global warming,
+and that historic land-use changes and aerosol forcing from limited available data is accurate.
+Uncertainty in this data would have great effects on the CCR value.
+The authors also note that their results are derived from idealised climate-carbon model scenarios over decades to centuries,
+meaning that extrapolation over longer time scales may not produce accurate results.
+The model produced in this report will only rely on \citeauthor{matthews_2009}'s linear relationship,
+and will estimate a constant of proportionality which is solely based on empirical data.
 
 Population represents a fundamental driver of emissions due to rising demands for energy.
-\textcite{lee_2003} summarised the demographic transition theory,
+\textcite{lee_2003}\supercite{lee_2003} summarised the demographic transition theory,
 which describes the growth changes of a population as a region develops.
 The paper is helpful to produce a logistics model for long-term demographic projections.
-However, the literature identifies several factors which would affect population trajectories
-and sheds important authority that a carrying capacity in a simple logistic model may not accurately represent
-the social, economic demographic mechanisms which would affect future population.
-Our logistic model is therefore used as an approximation for long-term behaviour
-and assumes that such behaviour is stable over long timescales.
+However, the literature identifies several factors which would affect population trajectories,
+suggesting that a carrying capacity in a simple logistics model may not accurately represent
+the social, economic or demographic mechanisms which would affect future population growth.
+Our logistic model is therefore used as an approximation for long-term behaviour and assumes
+that such behaviour is stable over long timescales.
 
 Stabilising global temperature does not capture all risks associated with climate change.
 Sea-level rise continues long after temperatures stabilise due to delayed responses of ocean heat uptake and ice-sheet dynamics.
-\textcite{rahmstorf_2007} proposed a semi-empirical linear relationship between sea-level changes and temperature.
+\textcite{rahmstorf_2007}\supercite{rahmstorf_2007} proposed a semi-empirical linear relationship between sea-level changes and temperature.
 The model captures long-term sea level behaviour as opposed to an assortment of underlying physical processes.
-While the model performs well over longer timescales, it is less reliable over shorter periods
-as it does not account for fluctuations in physical processes.
+While the model performs well over longer timescales,
+it is less reliable over shorter periods as it does not account for fluctuations in physical processes.
 Nonetheless, it provides an appropriate framework for assessing whether sea-levels can eventually stabilise
 under changing climate scenarios.
 
@@ -194,6 +145,124 @@ The second is stabilisation at 2\degree{C} by 2050,
 and the third is limiting warming to no higher than 1.5\degree{C} while plateauing sea-level rise by 2100.
 The model is subsequently used to assess the various changes and advancements required to achieve each scenario
 and evaluate the implications for the environment and humanity.
+
+% Climate change is one of the most significant global environmental challenges,
+% driven largely by anthropogenic greenhouse gas emissions from fossil fuel combustion,
+% industrial processes and land-use changes \cite{ipcc_2023}.
+% The resulting emission of carbon dioxide (\cotwo{}) into the atmosphere has caused a sustained rise in global mean temperature,
+% leading to widespread environmental challenges such as ecosystem degradation,
+% extreme weather events and sea-level rise.
+% As part of the initiative of the Global Institute for Climate Change and the Environment (GICCE),
+% this report seeks to improve general understanding of the Earth’s climate
+% and develop a simple mathematical model which reflects the goal of international governments to `stop' climate change.
+%
+% Human activities are the primary driver of increasing concentrations of \cotwo{} in the atmosphere \cite{gcb_2025}.
+% Fossil fuel combustion, land-use changes and other industrial processes release large quantities of carbon
+% which exceed the Earth's natural ability to absorb it through carbon sinks \cite{gcb_2025}.
+% Emissions of \cotwo{} are determined by four key factors, being population, GDP per capita,
+% energy intensity and carbon intensity \cite{deutch_2017}.
+% Although technological progress has reduced the carbon intensity of energy by
+% approximately 0.7\% per year over the past decade,
+% these improvements have been outweighed by increasing global energy demand as a result
+% of the growing population \cite{gcb_2025}.
+% Global anthropogenic \cotwo{} emissions have therefore continued to increase by 0.3\% per year in the decade 2015--2024.
+% Encouragingly, however, fossil fuel emissions have decreased in 35 economies during the decade 2015--2024
+% and emissions have slowed from 1.9\% in the decade 2005--2014,
+% demonstrating the success of partial decoupling of economic growth from emissions through technological changes.
+%
+% Increased emissions of \cotwo{} into the atmosphere contribute substantially to higher concentrations of greenhouse gases
+% which trap infrared radiation and thereby raise the global mean temperature.
+% Global warming is roughly proportional to the cumulative sum of annual carbon emissions \cite{matthews_2009},
+% the constant of proportionality being the Carbon-Climate Response (CCR).
+% This relationship forms the basis of the Global Carbon Budget 2025\supercite{gcb_2025} (GCB),
+% which aims to reduce cumulative emissions to limit long-term warming.
+% The GCB estimates that each additional emission of 180 Gt\cotwo{} will lead to around 0.1\degree{C} of warming,
+% leaving 170 Gt\cotwo{} remaining from the beginning of 2026 for a 50\% chance of limiting warming to 1.5\degree{C},
+% which is equivalent to roughly four years of emissions at the current rate \cite{gcb_2025}.
+%
+% The rising global mean temperature has created significant environmental consequences,
+% the particular focus of this report being sea-level rises.
+% Sea-level rise continues even after temperature stabilisation due to the delayed response of oceans and melting ice sheets.
+% The rate of sea level rise is approximately proportional to global temperature change over long time scales,
+% so sea level rise can be modelled empirically from temperature \cite{rahmstorf_2007}.
+% If warming is limited to 1.5\degree{C} above the pre-industrial baseline,
+% substantial long-term sea level rise is still expected,
+% and is projected to rise approximately 2--3 metres over the next 2,000 years,
+% although there is low confidence in the exactness of these projections \cite{gcb_2025}.
+% Reducing future emissions has become increasingly important to achieve temperature stabilisation
+% and minimise long term environmental impacts.
+%
+%
+% \section{Literature Review}
+%
+% The mathematical model produced in this report will quantify interactions between human activity
+% and the climate system to assess future climate scenarios.
+% The following literature will be considered according to how effectively each model captures
+% the relationships required for this investigation and how appropriate their assumptions are for our simple model.
+%
+% \textcite{matthews_2009} related \cotwo{} emissions to global temperature.
+% Using coupled climate-carbon cycle models, the authors found a linearly proportional relationship
+% between global warming and cumulative carbon emissions from semi-empirical sources.
+% The CCR is estimated to be approximately 1--2.1\degree{C} of warming per trillion tonnes of carbon emitted\supercite{matthews_2009}.
+% This relationship is independent of time and atmospheric concentrations.
+% Further, the model captures the processes of the carbon cycle,
+% and offsets the effects of carbon uptake into the atmosphere on temperature against carbon sink saturation.
+% This makes cumulative emissions highly useful for examining scenarios in which temperature is required to stabilise.
+% However, \citeauthor{matthews_2009} calculated that there is substantial uncertainty on the model,
+% being 0.4--1.5 Tt\cotwo{}.
+% This is due to the various assumptions on which the relationship relies.
+% For example, the authors assume that other greenhouse gases and non-greenhouse gases contribute negligibly to global warming.
+% Further, estimates for historic land-use changes and aerosol forcing from limited available data is assumed to be accurate.
+% However, uncertainty in this data would have great effects on the CCR value.
+% The authors also note that their results are derived from idealised climate-carbon model scenarios over decades to centuries,
+% meaning that extrapolation over longer time scales may not produce accurate results.
+% The model produced in this report will only rely on \citeauthor{matthews_2009}’s linear relationship,
+% and will estimate a constant of proportionality which is solely based on empirical data.
+%
+% The Kaya Identity provides a complementary expression for determining annual \cotwo{} emissions.
+% The identity decomposes annual \cotwo{} into a product of population, GDP per capita, energy intensity and carbon intensity.
+% \textcite{deutch_2017} uses this expression to examine the relationship between economic growth and emissions,
+% and demonstrates that improvements in energy and carbon intensity can weaken the relationship between economic growth and \cotwo{} emissions.
+% This is important for the purposes of the current report as it allows a framework for proposing technological changes
+% to produce a reduction in annual emissions.
+% However, the Kaya Identity is not a causal model,
+% so it cannot predict how the terms in the model will respond to technological development,
+% government policy or changes in the markets.
+% So, the reliability of the projections in that article are questionable.
+% This report aims to adopt the relationship established by the Kaya Identity.
+% However, it will assume that technological advancements have a direct impact on energy and carbon intensity.
+% The GCB provides empirical critiques against the assumptions of the model.
+% \textcite{gcb_2025} states that global emissions have not yet reached sustained decline
+% despite energy and carbon intensity improvements,
+% but also identifies evidence of partial decoupling.
+% Our model must be closely examined against observed trends.
+%
+% Population represents a fundamental driver of emissions due to rising demands for energy.
+% \textcite{lee_2003} summarised the demographic transition theory,
+% which describes the growth changes of a population as a region develops.
+% The paper is helpful to produce a logistics model for long-term demographic projections.
+% However, the literature identifies several factors which would affect population trajectories
+% and sheds important authority that a carrying capacity in a simple logistic model may not accurately represent
+% the social, economic demographic mechanisms which would affect future population.
+% Our logistic model is therefore used as an approximation for long-term behaviour
+% and assumes that such behaviour is stable over long timescales.
+%
+% Stabilising global temperature does not capture all risks associated with climate change.
+% Sea-level rise continues long after temperatures stabilise due to delayed responses of ocean heat uptake and ice-sheet dynamics.
+% \textcite{rahmstorf_2007} proposed a semi-empirical linear relationship between sea-level changes and temperature.
+% The model captures long-term sea level behaviour as opposed to an assortment of underlying physical processes.
+% While the model performs well over longer timescales, it is less reliable over shorter periods
+% as it does not account for fluctuations in physical processes.
+% Nonetheless, it provides an appropriate framework for assessing whether sea-levels can eventually stabilise
+% under changing climate scenarios.
+%
+% The literature provides key relationships required for the model in this report,
+% which will be applied to three scenarios by the GICCE.
+% The first is stabilisation of global temperatures to 4\degree{C} above pre-industrial levels by 2100.
+% The second is stabilisation at 2\degree{C} by 2050,
+% and the third is limiting warming to no higher than 1.5\degree{C} while plateauing sea-level rise by 2100.
+% The model is subsequently used to assess the various changes and advancements required to achieve each scenario
+% and evaluate the implications for the environment and humanity.
 
 
 \section{Modelling Methodology}
@@ -515,7 +584,7 @@ But Scenario 3, while it is mathematically possible, is not feasible in the real
 
 Our simplified model shows that technology and carbon removal must be complemented with rapid emissions reductions
 as opposed to outright replacing it.
-These targets are mathematically possible, but under current trends, they are not yet practically feasible.  
+These targets are mathematically possible, but under current trends, are not yet practically feasible.  
 
 
 \section{Bibliography}
@@ -523,6 +592,8 @@ These targets are mathematically possible, but under current trends, they are no
 \begingroup
 \nocite{*}
 \renewcommand{\section}[2]{}	% Hide the "References" heading
+% \fontsize{9pt}{10pt}\selectfont
+\tiny
 \printbibliography
 \endgroup
 
@@ -542,6 +613,14 @@ These targets are mathematically possible, but under current trends, they are no
 	}
 	\label{fig:pop}
 \end{figure}
+
+Intuition behind the model: Many papers argue, and UN projections also expect
+that population will eventually peak towards the end of this century between 9 and 12 billion people, before declining slowly.
+The UN projections use more complex ideas to calculate these projections, taking into account decreasing fertility rates,
+increasing literacy rates, and economic development occurring in lesser developed countries.
+The population decline term amending our population model empirically captures exactly that,
+so that the population model is more accurate.
+
 
 \begin{figure}[H]
 	\centering
@@ -563,30 +642,44 @@ These targets are mathematically possible, but under current trends, they are no
 	\label{fig:tech_ineff}
 \end{figure}
 
+The terms in both of these exponential functions were determined by linear regression on the logarithms of the values.
+
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\textwidth]{assets/co2.png}
+	\includegraphics[width=0.85\textwidth]{assets/co2.png}
 	\caption{
 		\cotwo{} model compared to real world historical \cotwo{} emissions, dataset from Our World in Data for years 1965--2024.
-		mean percentage error = -1.935\%, percentage error stdev = 5.5359\%
+		mean percentage error $\approx 0\%$, percentage error stdev = 5.5359\%
 	}
 	\label{fig:co2}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\textwidth]{assets/temp.png}
+	\includegraphics[width=0.85\textwidth]{assets/temp.png}
 	\caption{
 		Temperature model compared to real world historical temperature anomaly, dataset from Our World in Data for years 1850--2026.
-		mean error = <0.0003\degree{C}, error stdev = 0.1259\degree{C}
+		mean error $\approx 0\degree{C}$, error stdev = 0.1259\degree{C}
 	}
 	\label{fig:temp}
 \end{figure}
 
+These functions where calculated from \autoref{eq:emi_pyd} and \autoref{eq:temp_emi}, respectively.
+Since these were both proportionalities, we determined the constants of proportionalities by selecting some denominator,
+then incrementing/decrementing it until the mean error was as low as possible.
+For these, the error was on the order of 2E-5 ($2 \times 10^{-5}$).
+
+While approaching scenarios 1 and 2, in order for the temperature difference to actually plateau at 4\degree{C} in 2100 or 2\degree{C} in 2050,
+the required \cotwo{} removal would need to nearly match \cotwo{} production within the span of a few months.
+We deemed this not feasible because of the rapid technological deployment and cost to reach multiple gigatonnes of \cotwo{} removal.
+So we opted to use a piecewise continuous removal function, which can be described as a ramping effort.
+
+
 \subsection{Our Code}
 
-We have included the code used to model in our bibliography.
-But the link is included here: \url{https://github.com/vedangpurohit21/modelling3041}.
+We have included a link to our code used to model in our bibliography.
+But the link is also included here: \url{https://github.com/vedangpurohit21/modelling3041}.
 
 \end{appendices}
 

@@ -59,6 +59,7 @@ KAYA_data[num_cols] = KAYA_data[num_cols].interpolate()
 TEMP_data = pd.read_csv(uri_temp)
 CO2_data = pd.read_csv(uri_co2)
 
+# The base of this code was taken from Daba's individual project
 brackets = [
     ('World', 'OWID_WRL', 'tab:green'),
     # ('Europe', 'OWID_EUR', 'tab:cyan'),
@@ -422,6 +423,7 @@ while True:
     mean = sum(error) / len(error)
 
     if mean < 0:
+        kd -= 1
         break
 
     kd += 1
